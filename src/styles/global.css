@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #ff8c00;
+    --primary-hover: #e67c00;
+    --secondary-color: #6c757d;
+    --background-color: #f8f9fa;
+    --card-background: #ffffff;
+    --text-color: #212529;
+    --border-color: #dee2e6;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --success-color: #28a745;
+    --error-color: #dc3545;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.MuiButton-contained {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+}
+
+.MuiButton-contained:hover {
+    background-color: var(--primary-hover) !important;
+}
+
+.MuiPaper-root {
+    border-radius: 12px !important;
+    overflow: hidden;
+}
+
+.MuiTableCell-head {
+    font-weight: 600 !important;
+}
+
+.MuiOutlinedInput-root {
+    border-radius: 8px !important;
+}
+
+.MuiChip-colorPrimary {
+    background-color: var(--primary-color) !important;
+}
+
+.MuiChip-colorSuccess {
+    background-color: var(--success-color) !important;
+}
