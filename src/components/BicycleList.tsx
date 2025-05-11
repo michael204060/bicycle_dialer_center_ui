@@ -100,6 +100,11 @@ const BicycleList: React.FC = () => {
                                             <Person style={{ marginRight: '5px', color: '#ff8c00' }} />
                                             {bicycle.assignedUser.username}
                                         </Box>
+                                    ) : bicycle.assignedUserId ? (
+                                        <Box display="flex" alignItems="center">
+                                            <Person style={{ marginRight: '5px', color: '#ff8c00' }} />
+                                            User #{bicycle.assignedUserId}
+                                        </Box>
                                     ) : 'None'}
                                 </TableCell>
                                 <TableCell>

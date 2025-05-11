@@ -1,42 +1,47 @@
 import React, { useEffect, useState } from 'react';
 import {
     TextField, Button, Container, Typography, Box,
-    FormControl, InputLabel, Select, MenuItem, CircularProgress
+    FormControl, InputLabel, Select, MenuItem, CircularProgress, Alert
 } from '@mui/material';
 import { useNavigate, useParams } from 'react-router-dom';
-import {
-    getBicycles, createBicycle, updateBicycle, getUsers, Bicycle, User
-} from '../api/bicycleApi';
+import { getBicycles, createBicycle, updateBicycle, getUsers, Bicycle, User } from '../api/bicycleApi';
 
 const BicycleForm: React.FC = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [users, setUsers] = useState<User[]>([]);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
     const [bicycle, setBicycle] = useState<Bicycle>({
         brand: '',
         model: '',
         type: '',
         price: 0,
-        assignedUser: undefined
+        assignedUserId: undefined
     });
 
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const userData = await getUsers();
+                const [userData, bicycles] = await Promise.all([
+                    getUsers(),
+                    id ? getBicycles() : Promise.resolve([])
+                ]);
                 setUsers(userData);
 
-                if (id) {
-                    const bicycles = await getBicycles();
+                if (id && bicycles.length > 0) {
                     const foundBicycle = bicycles.find(b => b.id === parseInt(id));
                     if (foundBicycle) {
-                        setBicycle(foundBicycle);
+                        setBicycle({
+                            ...foundBicycle,
+                            assignedUserId: foundBicycle.assignedUser?.id || foundBicycle.assignedUserId
+                        });
                     }
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);
+                setError('Failed to load data');
             } finally {
                 setLoading(false);
             }
@@ -48,6 +53,7 @@ const BicycleForm: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
+        setError(null);
         try {
             if (id) {
                 await updateBicycle(parseInt(id), bicycle);
@@ -55,8 +61,9 @@ const BicycleForm: React.FC = () => {
                 await createBicycle(bicycle);
             }
             navigate('/');
-        } catch (error) {
+        } catch (error: any) {
             console.error('Error saving bicycle:', error);
+            setError(error.message || 'Failed to save bicycle');
         } finally {
             setLoading(false);
         }
@@ -70,11 +77,10 @@ const BicycleForm: React.FC = () => {
         }));
     };
 
-    const handleUserChange = (userId: number) => {
-        const selectedUser = users.find(user => user.id === userId);
+    const handleUserChange = (userId: number | '') => {
         setBicycle(prev => ({
             ...prev,
-            assignedUser: selectedUser
+            assignedUserId: userId === '' ? undefined : userId
         }));
     };
 
@@ -92,6 +98,8 @@ const BicycleForm: React.FC = () => {
                 <Typography variant="h4" component="h1" gutterBottom style={{ color: '#ff8c00' }}>
                     {id ? 'Edit Bicycle' : 'Add New Bicycle'}
                 </Typography>
+
+                {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
 
                 <form onSubmit={handleSubmit}>
                     <TextField
@@ -136,7 +144,7 @@ const BicycleForm: React.FC = () => {
                     <FormControl fullWidth margin="normal">
                         <InputLabel>Assigned User</InputLabel>
                         <Select
-                            value={bicycle.assignedUser?.id || ''}
+                            value={bicycle.assignedUserId || ''}
                             onChange={(e) => handleUserChange(Number(e.target.value))}
                             label="Assigned User"
                         >

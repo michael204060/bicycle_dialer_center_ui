@@ -6,6 +6,7 @@ import UserList from './components/UserList';
 import RentalList from './components/RentalList';
 import BicycleForm from './components/BicycleForm';
 import RentalAction from './components/RentalAction';
+import UserForm from './components/UserForm';
 
 const App: React.FC = () => {
     return (
@@ -30,6 +31,8 @@ const App: React.FC = () => {
                         <Route path="/users" element={<UserList />} />
                         <Route path="/rentals" element={<RentalList />} />
                         <Route path="/add-bicycle" element={<BicycleForm />} />
+                        <Route path="/add-user" element={<UserForm />} />
+                        <Route path="/edit-user/:id" element={<UserForm />} />
                         <Route path="/rent-action/:actionType" element={<RentalAction />} />
                     </Routes>
                 </Container>

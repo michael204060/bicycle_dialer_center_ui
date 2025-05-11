@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
     Container, TextField, Button, Typography, Box,
-    FormControl, InputLabel, Select, MenuItem, CircularProgress
+    FormControl, InputLabel, Select, MenuItem, CircularProgress, Alert
 } from '@mui/material';
 import { useNavigate, useParams } from 'react-router-dom';
 import {
@@ -14,6 +14,7 @@ const RentalAction: React.FC = () => {
     const [users, setUsers] = useState<User[]>([]);
     const [bicycles, setBicycles] = useState<Bicycle[]>([]);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
     const [userId, setUserId] = useState<number | ''>('');
     const [bicycleId, setBicycleId] = useState<number | ''>('');
 
@@ -21,13 +22,15 @@ const RentalAction: React.FC = () => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const userData = await getUsers();
+                const [userData, bicycleData] = await Promise.all([
+                    getUsers(),
+                    getBicycles()
+                ]);
                 setUsers(userData);
-
-                const bicycleData = await getBicycles();
                 setBicycles(bicycleData);
             } catch (error) {
                 console.error('Error fetching data:', error);
+                setError('Failed to load data');
             } finally {
                 setLoading(false);
             }
@@ -41,6 +44,7 @@ const RentalAction: React.FC = () => {
         if (!userId || !bicycleId) return;
 
         setLoading(true);
+        setError(null);
         try {
             if (actionType === 'rent') {
                 await rentBicycle(userId, bicycleId);
@@ -48,8 +52,9 @@ const RentalAction: React.FC = () => {
                 await returnBicycle(userId, bicycleId);
             }
             navigate('/rentals');
-        } catch (error) {
+        } catch (error: any) {
             console.error(`Error ${actionType}ing bicycle:`, error);
+            setError(error.message || `Failed to ${actionType} bicycle`);
         } finally {
             setLoading(false);
         }
@@ -61,6 +66,8 @@ const RentalAction: React.FC = () => {
                 <Typography variant="h4" component="h1" gutterBottom style={{ color: '#ff8c00' }}>
                     {actionType === 'rent' ? 'Rent Bicycle' : 'Return Bicycle'}
                 </Typography>
+
+                {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
 
                 {loading && !users.length ? (
                     <CircularProgress style={{ color: '#ff8c00' }} />
