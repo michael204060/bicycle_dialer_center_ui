@@ -41,6 +41,18 @@ const BicycleList: React.FC = () => {
                 <Typography variant="h4" component="h1" style={{ color: '#ff8c00' }}>
                     Bicycles
                 </Typography>
+                <Button
+                    variant="contained"
+                    component={Link}
+                    to="/add-bicycle"
+                    style={{
+                        backgroundColor: '#ff8c00',
+                        color: 'white',
+                        marginLeft: 'auto'
+                    }}
+                >
+                    Add Bicycle
+                </Button>
             </Box>
 
             <Box display="flex" gap={2} mb={3} flexWrap="wrap">
@@ -100,17 +112,12 @@ const BicycleList: React.FC = () => {
                                             <Person style={{ marginRight: '5px', color: '#ff8c00' }} />
                                             {bicycle.assignedUser.username}
                                         </Box>
-                                    ) : bicycle.assignedUserId ? (
-                                        <Box display="flex" alignItems="center">
-                                            <Person style={{ marginRight: '5px', color: '#ff8c00' }} />
-                                            User #{bicycle.assignedUserId}
-                                        </Box>
                                     ) : 'None'}
                                 </TableCell>
                                 <TableCell>
                                     <IconButton
                                         component={Link}
-                                        to={`/add-bicycle?id=${bicycle.id}`}
+                                        to={`/edit-bicycle/${bicycle.id}`}
                                         color="primary"
                                     >
                                         <Edit />

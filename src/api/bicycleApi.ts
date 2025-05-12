@@ -36,6 +36,11 @@ export const getBicycles = async (brand?: string, model?: string): Promise<Bicyc
     return response.data;
 };
 
+export const getBicycleById = async (id: number): Promise<Bicycle> => {
+    const response = await axios.get(`${API_URL}/bicycles/${id}`);
+    return response.data;
+};
+
 export const createBicycle = async (data: Bicycle): Promise<Bicycle> => {
     const response = await axios.post(`${API_URL}/bicycles/single`, {
         ...data,
@@ -47,6 +52,7 @@ export const createBicycle = async (data: Bicycle): Promise<Bicycle> => {
 export const updateBicycle = async (id: number, data: Bicycle): Promise<Bicycle> => {
     const response = await axios.put(`${API_URL}/bicycles/${id}`, {
         ...data,
+        id: id,
         assignedUserId: data.assignedUserId || null
     });
     return response.data;

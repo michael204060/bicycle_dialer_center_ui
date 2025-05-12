@@ -4,7 +4,7 @@ import {
     FormControl, InputLabel, Select, MenuItem, CircularProgress, Alert
 } from '@mui/material';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getBicycles, createBicycle, updateBicycle, getUsers, Bicycle, User } from '../api/bicycleApi';
+import { getBicycleById, createBicycle, updateBicycle, getUsers, Bicycle, User } from '../api/bicycleApi';
 
 const BicycleForm: React.FC = () => {
     const { id } = useParams();
@@ -13,6 +13,7 @@ const BicycleForm: React.FC = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [bicycle, setBicycle] = useState<Bicycle>({
+        id: id ? parseInt(id) : undefined,
         brand: '',
         model: '',
         type: '',
@@ -24,20 +25,18 @@ const BicycleForm: React.FC = () => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const [userData, bicycles] = await Promise.all([
+                const [userData, bicycleData] = await Promise.all([
                     getUsers(),
-                    id ? getBicycles() : Promise.resolve([])
+                    id ? getBicycleById(parseInt(id)) : Promise.resolve(null)
                 ]);
                 setUsers(userData);
 
-                if (id && bicycles.length > 0) {
-                    const foundBicycle = bicycles.find(b => b.id === parseInt(id));
-                    if (foundBicycle) {
-                        setBicycle({
-                            ...foundBicycle,
-                            assignedUserId: foundBicycle.assignedUser?.id || foundBicycle.assignedUserId
-                        });
-                    }
+                if (bicycleData) {
+                    setBicycle({
+                        ...bicycleData,
+                        id: bicycleData.id,
+                        assignedUserId: bicycleData.assignedUser?.id
+                    });
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -84,7 +83,7 @@ const BicycleForm: React.FC = () => {
         }));
     };
 
-    if (loading && !bicycle.brand) {
+    if (loading && id && !bicycle.brand) {
         return (
             <Container maxWidth="sm" style={{ textAlign: 'center', marginTop: '50px' }}>
                 <CircularProgress style={{ color: '#ff8c00' }} />
