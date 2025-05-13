@@ -26,6 +26,7 @@ export interface Rental {
     bicycleModel: string;
     rentStartTime: string;
     rentEndTime?: string;
+    isActive?: boolean;
 }
 
 export const getBicycles = async (brand?: string, model?: string): Promise<Bicycle[]> => {

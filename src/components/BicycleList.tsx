@@ -5,15 +5,17 @@ import {
 } from '@mui/material';
 import { Edit, Delete, DirectionsBike, Person, Add } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
-import { getBicycles, deleteBicycle, Bicycle } from '../api/bicycleApi';
+import { getBicycles, deleteBicycle, Bicycle, getRentals } from '../api/bicycleApi';
 
 const BicycleList: React.FC = () => {
     const [bicycles, setBicycles] = useState<Bicycle[]>([]);
+    const [rentals, setRentals] = useState<any[]>([]);
     const [searchBrand, setSearchBrand] = useState('');
     const [searchModel, setSearchModel] = useState('');
 
     useEffect(() => {
         fetchBicycles();
+        fetchRentals();
     }, []);
 
     const fetchBicycles = async () => {
@@ -23,6 +25,21 @@ const BicycleList: React.FC = () => {
         } catch (error) {
             console.error('Error fetching bicycles:', error);
         }
+    };
+
+    const fetchRentals = async () => {
+        try {
+            const data = await getRentals();
+            setRentals(data);
+        } catch (error) {
+            console.error('Error fetching rentals:', error);
+        }
+    };
+
+    const isBicycleRented = (bicycleId: number) => {
+        return rentals.some(rental =>
+            rental.bicycleId === bicycleId && !rental.rentEndTime
+        );
     };
 
     const handleDelete = async (id: number) => {
@@ -97,44 +114,57 @@ const BicycleList: React.FC = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {bicycles.map((bicycle) => (
-                            <TableRow key={bicycle.id} hover>
-                                <TableCell>{bicycle.brand}</TableCell>
-                                <TableCell>{bicycle.model}</TableCell>
-                                <TableCell>{bicycle.type}</TableCell>
-                                <TableCell>${bicycle.price?.toFixed(2)}</TableCell>
-                                <TableCell>
-                                    {bicycle.assignedUser ? (
-                                        <Box display="flex" alignItems="center">
-                                            <Person style={{ marginRight: '5px', color: '#ff8c00' }} />
-                                            {bicycle.assignedUser.username}
-                                        </Box>
-                                    ) : 'None'}
-                                </TableCell>
-                                <TableCell>
-                                    <IconButton
-                                        component={Link}
-                                        to={`/edit-bicycle/${bicycle.id}`}
-                                        color="primary"
-                                    >
-                                        <Edit />
-                                    </IconButton>
-                                    <IconButton
-                                        onClick={() => handleDelete(bicycle.id!)}
-                                        color="error"
-                                    >
-                                        <Delete />
-                                    </IconButton>
-                                    <IconButton
-                                        component={Link}
-                                        to={`/rent-bicycle/${bicycle.id}`}
-                                        style={{ color: '#4caf50' }}
-                                    >
-                                        <DirectionsBike />
-                                    </IconButton>
-                                </TableCell>
-                            </TableRow>
-                        ))}
+                        {bicycles.map((bicycle) => {
+                            const isRented = isBicycleRented(bicycle.id!);
+                            return (
+                                <TableRow key={bicycle.id} hover>
+                                    <TableCell>{bicycle.brand}</TableCell>
+                                    <TableCell>{bicycle.model}</TableCell>
+                                    <TableCell>{bicycle.type}</TableCell>
+                                    <TableCell>${bicycle.price?.toFixed(2)}</TableCell>
+                                    <TableCell>
+                                        {bicycle.assignedUser ? (
+                                            <Box display="flex" alignItems="center">
+                                                <Person style={{ marginRight: '5px', color: '#ff8c00' }} />
+                                                {bicycle.assignedUser.username}
+                                            </Box>
+                                        ) : 'None'}
+                                    </TableCell>
+                                    <TableCell>
+                                        <IconButton
+                                            component={Link}
+                                            to={`/edit-bicycle/${bicycle.id}`}
+                                            color="primary"
+                                        >
+                                            <Edit />
+                                        </IconButton>
+                                        <IconButton
+                                            onClick={() => handleDelete(bicycle.id!)}
+                                            color="error"
+                                        >
+                                            <Delete />
+                                        </IconButton>
+                                        {isRented ? (
+                                            <IconButton
+                                                component={Link}
+                                                to={`/return-bicycle/${bicycle.id}`}
+                                                style={{ color: '#f44336' }}
+                                            >
+                                                <DirectionsBike />
+                                            </IconButton>
+                                        ) : (
+                                            <IconButton
+                                                component={Link}
+                                                to={`/rent-bicycle/${bicycle.id}`}
+                                                style={{ color: '#4caf50' }}
+                                            >
+                                                <DirectionsBike />
+                                            </IconButton>
+                                        )}
+                                    </TableCell>
+                                </TableRow>
+                            );
+                        })}
                     </TableBody>
                 </Table>
             </TableContainer>

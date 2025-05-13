@@ -6,6 +6,8 @@ import UserList from './components/UserList';
 import BicycleForm from './components/BicycleForm';
 import UserForm from './components/UserForm';
 import RentBicycleForm from './components/RentBicycleForm';
+import ReturnBicycleForm from './components/ReturnBicycleForm';
+import RentalList from './components/RentalList';
 
 const App: React.FC = () => {
     return (
@@ -19,6 +21,7 @@ const App: React.FC = () => {
                         </Typography>
                         <Button color="inherit" component={Link} to="/">Bicycles</Button>
                         <Button color="inherit" component={Link} to="/users">Users</Button>
+                        <Button color="inherit" component={Link} to="/rentals">Rentals</Button>
                     </Toolbar>
                 </AppBar>
 
@@ -26,11 +29,13 @@ const App: React.FC = () => {
                     <Routes>
                         <Route path="/" element={<BicycleList />} />
                         <Route path="/users" element={<UserList />} />
+                        <Route path="/rentals" element={<RentalList />} />
                         <Route path="/add-bicycle" element={<BicycleForm />} />
                         <Route path="/edit-bicycle/:id" element={<BicycleForm />} />
                         <Route path="/add-user" element={<UserForm />} />
                         <Route path="/edit-user/:id" element={<UserForm />} />
                         <Route path="/rent-bicycle/:bicycleId" element={<RentBicycleForm />} />
+                        <Route path="/return-bicycle/:bicycleId" element={<ReturnBicycleForm />} />
                     </Routes>
                 </Container>
             </div>
