@@ -3,7 +3,7 @@ import {
     Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
     Paper, Button, TextField, IconButton, Box, Typography
 } from '@mui/material';
-import { Edit, Delete, DirectionsBike, Person } from '@mui/icons-material';
+import { Edit, Delete, DirectionsBike, Person, Add } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { getBicycles, deleteBicycle, Bicycle } from '../api/bicycleApi';
 
@@ -41,21 +41,9 @@ const BicycleList: React.FC = () => {
                 <Typography variant="h4" component="h1" style={{ color: '#ff8c00' }}>
                     Bicycles
                 </Typography>
-                <Button
-                    variant="contained"
-                    component={Link}
-                    to="/add-bicycle"
-                    style={{
-                        backgroundColor: '#ff8c00',
-                        color: 'white',
-                        marginLeft: 'auto'
-                    }}
-                >
-                    Add Bicycle
-                </Button>
             </Box>
 
-            <Box display="flex" gap={2} mb={3} flexWrap="wrap">
+            <Box display="flex" gap={2} mb={3} flexWrap="wrap" alignItems="center">
                 <TextField
                     label="Search by Brand"
                     variant="outlined"
@@ -84,6 +72,15 @@ const BicycleList: React.FC = () => {
                     }}
                 >
                     Clear
+                </Button>
+                <Button
+                    variant="contained"
+                    component={Link}
+                    to="/add-bicycle"
+                    style={{ backgroundColor: '#ff8c00', color: 'white' }}
+                    startIcon={<Add />}
+                >
+                    Add Bicycle
                 </Button>
             </Box>
 
@@ -127,6 +124,13 @@ const BicycleList: React.FC = () => {
                                         color="error"
                                     >
                                         <Delete />
+                                    </IconButton>
+                                    <IconButton
+                                        component={Link}
+                                        to={`/rent-bicycle/${bicycle.id}`}
+                                        style={{ color: '#4caf50' }}
+                                    >
+                                        <DirectionsBike />
                                     </IconButton>
                                 </TableCell>
                             </TableRow>

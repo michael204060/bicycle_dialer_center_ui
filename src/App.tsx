@@ -3,10 +3,9 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Button, Container, CssBaseline } from '@mui/material';
 import BicycleList from './components/BicycleList';
 import UserList from './components/UserList';
-import RentalList from './components/RentalList';
 import BicycleForm from './components/BicycleForm';
-import RentalAction from './components/RentalAction';
 import UserForm from './components/UserForm';
+import RentBicycleForm from './components/RentBicycleForm';
 
 const App: React.FC = () => {
     return (
@@ -20,8 +19,6 @@ const App: React.FC = () => {
                         </Typography>
                         <Button color="inherit" component={Link} to="/">Bicycles</Button>
                         <Button color="inherit" component={Link} to="/users">Users</Button>
-                        <Button color="inherit" component={Link} to="/rentals">Rentals</Button>
-                        <Button color="inherit" component={Link} to="/add-bicycle">Add Bicycle</Button>
                     </Toolbar>
                 </AppBar>
 
@@ -29,12 +26,11 @@ const App: React.FC = () => {
                     <Routes>
                         <Route path="/" element={<BicycleList />} />
                         <Route path="/users" element={<UserList />} />
-                        <Route path="/rentals" element={<RentalList />} />
                         <Route path="/add-bicycle" element={<BicycleForm />} />
                         <Route path="/edit-bicycle/:id" element={<BicycleForm />} />
                         <Route path="/add-user" element={<UserForm />} />
                         <Route path="/edit-user/:id" element={<UserForm />} />
-                        <Route path="/rent-action/:actionType" element={<RentalAction />} />
+                        <Route path="/rent-bicycle/:bicycleId" element={<RentBicycleForm />} />
                     </Routes>
                 </Container>
             </div>
