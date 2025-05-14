@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import {
     Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
-    Paper, Button, Typography, Box, Chip
+    Paper, Typography, Box, Chip
 } from '@mui/material';
 import { DirectionsBike, Person, Event, EventAvailable } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
 import { getRentals, Rental } from '../api/bicycleApi';
 
 const RentalList: React.FC = () => {
@@ -30,25 +29,6 @@ const RentalList: React.FC = () => {
                 <Typography variant="h4" component="h1" style={{ color: '#ff8c00' }}>
                     Rentals
                 </Typography>
-            </Box>
-
-            <Box mb={3}>
-                <Button
-                    variant="contained"
-                    component={Link}
-                    to="/rent-action/rent"
-                    style={{ backgroundColor: '#ff8c00', color: 'white', marginRight: '10px' }}
-                >
-                    Rent Bicycle
-                </Button>
-                <Button
-                    variant="contained"
-                    component={Link}
-                    to="/rent-action/return"
-                    style={{ backgroundColor: '#ff8c00', color: 'white' }}
-                >
-                    Return Bicycle
-                </Button>
             </Box>
 
             <TableContainer component={Paper} elevation={3}>
