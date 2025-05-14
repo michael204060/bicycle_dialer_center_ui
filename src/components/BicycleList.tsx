@@ -66,12 +66,14 @@ const BicycleList: React.FC = () => {
                     variant="outlined"
                     value={searchBrand}
                     onChange={(e) => setSearchBrand(e.target.value)}
+                    size='small'
                 />
                 <TextField
                     label="Search by Model"
                     variant="outlined"
                     value={searchModel}
                     onChange={(e) => setSearchModel(e.target.value)}
+                    size='small'
                 />
                 <Button
                     variant="contained"

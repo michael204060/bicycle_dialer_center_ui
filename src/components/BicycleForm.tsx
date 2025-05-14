@@ -126,6 +126,7 @@ const BicycleForm: React.FC = () => {
                         onChange={handleChange}
                         fullWidth
                         margin="normal"
+                        size='small'
                         required
                     />
                     <TextField
@@ -137,6 +138,7 @@ const BicycleForm: React.FC = () => {
                         fullWidth
                         margin="normal"
                         required
+                        size='small'
                         InputProps={{ inputProps: { min: 0, step: 0.01 } }}
                     />
 

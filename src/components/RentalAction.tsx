@@ -28,9 +28,12 @@ const RentalAction: React.FC = () => {
                 ]);
                 setUsers(userData);
                 setBicycles(bicycleData);
-            } catch (error) {
+            } catch (error: any) {
                 console.error('Error fetching data:', error);
-                setError('Failed to load data');
+                const errorMessage = error.cause === 400 ?
+                    error.message :
+                    'Failed to load data (400 Bad Request)';
+                setError(errorMessage);
             } finally {
                 setLoading(false);
             }
@@ -54,7 +57,10 @@ const RentalAction: React.FC = () => {
             navigate('/rentals');
         } catch (error: any) {
             console.error(`Error ${actionType}ing bicycle:`, error);
-            setError(error.message || `Failed to ${actionType} bicycle`);
+            const errorMessage = error.cause === 400 ?
+                error.message :
+                `Failed to ${actionType} bicycle (400 Bad Request)`;
+            setError(errorMessage);
         } finally {
             setLoading(false);
         }
