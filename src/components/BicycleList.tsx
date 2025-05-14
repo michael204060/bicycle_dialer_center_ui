@@ -53,6 +53,7 @@ const BicycleList: React.FC = () => {
 
     return (
         <div>
+
             <Box display="flex" alignItems="center" mb={3}>
                 <DirectionsBike fontSize="large" style={{ color: '#ff8c00', marginRight: '10px' }} />
                 <Typography variant="h4" component="h1" style={{ color: '#ff8c00' }}>
@@ -60,38 +61,42 @@ const BicycleList: React.FC = () => {
                 </Typography>
             </Box>
 
-            <Box display="flex" gap={2} mb={3} flexWrap="wrap" alignItems="center">
-                <TextField
-                    label="Search by Brand"
-                    variant="outlined"
-                    value={searchBrand}
-                    onChange={(e) => setSearchBrand(e.target.value)}
-                    size='small'
-                />
-                <TextField
-                    label="Search by Model"
-                    variant="outlined"
-                    value={searchModel}
-                    onChange={(e) => setSearchModel(e.target.value)}
-                    size='small'
-                />
-                <Button
-                    variant="contained"
-                    onClick={fetchBicycles}
-                    style={{ backgroundColor: '#ff8c00', color: 'white' }}
-                >
-                    Search
-                </Button>
-                <Button
-                    variant="outlined"
-                    onClick={() => {
-                        setSearchBrand('');
-                        setSearchModel('');
-                        fetchBicycles();
-                    }}
-                >
-                    Clear
-                </Button>
+
+            <Box display="flex" justifyContent="space-between" alignItems="center" mb={3} flexWrap="wrap" gap={2}>
+                <Box display="flex" gap={2} flexWrap="wrap" alignItems="center">
+                    <TextField
+                        label="Search by Brand"
+                        variant="outlined"
+                        value={searchBrand}
+                        onChange={(e) => setSearchBrand(e.target.value)}
+                        size='small'
+                    />
+                    <TextField
+                        label="Search by Model"
+                        variant="outlined"
+                        value={searchModel}
+                        onChange={(e) => setSearchModel(e.target.value)}
+                        size='small'
+                    />
+                    <Button
+                        variant="contained"
+                        onClick={fetchBicycles}
+                        style={{ backgroundColor: '#ff8c00', color: 'white' }}
+                    >
+                        Search
+                    </Button>
+                    <Button
+                        variant="outlined"
+                        onClick={() => {
+                            setSearchBrand('');
+                            setSearchModel('');
+                            fetchBicycles();
+                        }}
+                    >
+                        Clear
+                    </Button>
+                </Box>
+
                 <Button
                     variant="contained"
                     component={Link}
