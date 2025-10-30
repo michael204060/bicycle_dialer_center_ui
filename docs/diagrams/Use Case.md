@@ -1,6 +1,6 @@
 # Диаграмма вариантов использования "Bicycle Dealer Center"
 
-![Диаграмма вариантов использования](https://www.plantuml.com/plantuml/svg/SoWkIImgAStDuG8oX222iGS0)
+![Диаграмма вариантов использования](https://github.com/michael204060/bicycle_dialer_center_ui/tree/master/docs/diagrams/images/UseCase.png)
 
 # Глоссарий
 
