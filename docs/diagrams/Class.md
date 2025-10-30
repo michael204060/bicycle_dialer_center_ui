@@ -2,7 +2,7 @@
 
 Эта диаграмма отражает основные сущности (модели данных) во фронтенд-приложении, как они описаны в `api/bicycleApi.ts`.
 
-![Диаграмма классов](https://github.com/michael204060/bicycle_dialer_center_ui/tree/master/docs/diagrams/images/ClassesDiagram.png)
+![Диаграмма классов](./images/ClassesDiagram.png)
 
 # Глоссарий
 

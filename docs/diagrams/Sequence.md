@@ -7,12 +7,12 @@
 
 ### 1. Добавление нового велосипеда<a name="1"></a>
 
-![Добавление нового велосипеда](https://github.com/michael204060/bicycle_dialer_center_ui/tree/master/docs/diagrams/images/CreatingBicycle.png)
+![Добавление нового велосипеда](./images/CreatingBicycle.png)
 
 ### 2. Аренда велосипеда пользователем<a name="2"></a>
 
-![Аренда велосипеда](https://github.com/michael204060/bicycle_dialer_center_ui/tree/master/docs/diagrams/images/RentingProcess.png)
+![Аренда велосипеда](./images/RentingProcess.png)
 
 ### 3. Просмотр списка аренд<a name="3"></a>
 
-![Просмотр списка аренд](https://github.com/michael204060/bicycle_dialer_center_ui/tree/master/docs/diagrams/images/RentingList.png)
+![Просмотр списка аренд](./images/RentingList.png)

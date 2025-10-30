@@ -6,12 +6,12 @@ Bicycle Dealer Center — это веб-приложение для управл
 
 |                                                  Список велосипедов                                                   |                                              Форма добавления/редактирования                                              |                                                Список пользователей                                                |
 |:---------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------:|
-| ![Bicycle List Screen](https://github.com/michael204060/bicycle_dialer_center_ui/tree/master/docs/mockups/BicycleMenu.png) | ![Bicycle Form Screen](https://github.com/michael204060/bicycle_dialer_center_ui/tree/master/docs/mockups/AddingBicycle.png) | ![User List Screen](https://github.com/michael204060/bicycle_dialer_center_ui/tree/master/docs/mockups/UsersMenu.png) |
+| ![Bicycle List Screen](./docs/mockups/BicycleMenu.png) | ![Bicycle Form Screen](./docs/mockups/AddingBicycle.png) | ![User List Screen](./docs/mockups/UsersMenu.png) |
 
 
-|                                                  Список аренд                                                   |                                                   Модальное окно аренды                                                   |                                                    Модальное окно возврата                                                    |
-|:---------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------:|
-| ![Rentals List Screen](https://github.com/michael204060/bicycle_dealer_center_ui/tree/master/docs/RentalsList.png) | ![Rent Bicycle Modal](https://github.com/michael204060/bicycle_dialer_center_ui/tree/master/docs/mockups/RentingBicycle.png) | ![Return Bicycle Modal](https://github.com/michael204060/bicycle_dialer_center_ui/tree/master/docs/mockups/ReturningBicycle.png) |
+|                      Список аренд                      |                                                   Модальное окно аренды                                                   |                                                    Модальное окно возврата                                                    |
+|:------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------:|
+| ![Rentals List Screen](./docs/mockups/RentalsList.png) | ![Rent Bicycle Modal](./docs/mockups/RentingBicycle.png) | ![Return Bicycle Modal](./docs/mockups/ReturningBicycle.png) |
 
 ## 🚀 Основные возможности
 
@@ -29,9 +29,9 @@ Bicycle Dealer Center — это веб-приложение для управл
 ## Навигация по репозиторию:
 [SRS файл программы](https://github.com/michael204060/bicycle_dialer_center_ui/blob/master/docs/SRS.md)
 
-[Diagrams](https://github.com/michael204060/bicycle_dialer_center_ui/tree/master/docs/diagrams)
+[Diagrams](./docs/diagrams)
 
-[Interface images](https://github.com/michael204060/bicycle_dialer_center_ui/tree/master/docs/mockups)
+[Interface images](./docs/mockups)
 
 [Test plan](https://github.com/michael204060/bicycle_dialer_center_ui/blob/master/Test%20plan.md)
 

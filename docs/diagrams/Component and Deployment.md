@@ -4,7 +4,7 @@
 
 Эта диаграмма показывает основные компоненты фронтенд-приложения и их взаимодействие с бэкендом.
 
-![Диаграмма компонентов](https://github.com/michael204060/bicycle_dialer_center_ui/tree/master/docs/diagrams/images/ComponentsDiagram.png)
+![Диаграмма компонентов](./images/ComponentsDiagram.png)
 
 **Описание компонентов:**
 *   **UI Components:** Компоненты React (BicycleList, UserForm и т.д.), отвечающие за пользовательский интерфейс.
@@ -18,7 +18,7 @@
 
 Эта диаграмма показывает, как компоненты системы разворачиваются на физических или виртуальных узлах.
 
-![Диаграмма развёртывания](https://github.com/michael204060/bicycle_dialer_center_ui/tree/master/docs/diagrams/images/DeploymentDiagram.png)
+![Диаграмма развёртывания](./images/DeploymentDiagram.png)
 
 **Описание:**
 *   **User's Browser:** Клиентское устройство, на котором исполняется фронтенд-приложение на React.
