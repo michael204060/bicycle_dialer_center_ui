@@ -78,13 +78,13 @@
 
 ## 2.2 Интерфейс пользователя
 
-| Список велосипедов | Форма добавления/редактирования | Список пользователей |
-| :---: | :---: | :---: |
-| ![Bicycle List Screen](https://github.com/michael204060/bicycle-dealer-center/tree/master/docs/mockups/BicycleMenu.jpg) | ![Bicycle Form Screen](https://github.com/michael204060/bicycle-dealer-center/tree/master/docs/mockups/AddingBicycle.jpg) | ![User List Screen](https://github.com/michael204060/bicycle-dealer-center/tree/master/docs/mockups/UsersMenu.jpg) |
+|                                                   Список велосипедов                                                    |                                              Форма добавления/редактирования                                              |                                                Список пользователей                                                |
+|:-----------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------:|
+| ![Bicycle List Screen](https://github.com/michael204060/bicycle-dealer-center/tree/master/docs/mockups/BicycleMenu.png) | ![Bicycle Form Screen](https://github.com/michael204060/bicycle-dealer-center/tree/master/docs/mockups/AddingBicycle.png) | ![User List Screen](https://github.com/michael204060/bicycle-dealer-center/tree/master/docs/mockups/UsersMenu.png) |
 
-| Список аренд | Модальное окно аренды | Модальное окно возврата |
-| :---: | :---: | :---: |
-| ![Rentals List Screen](https://github.com/michael204060/bicycle-dealer-center/tree/master/docs/mockups/RentalsList.jpg) | ![Rent Bicycle Modal](https://github.com/michael204060/bicycle-dealer-center/tree/master/docs/mockups/RentingBicycle.jpg) | ![Return Bicycle Modal](https://github.com/michael204060/bicycle-dealer-center/tree/master/docs/mockups/ReturningBicycle.jpg) |
+|                                                      Список аренд                                                       |                                                   Модальное окно аренды                                                   |                                                    Модальное окно возврата                                                    |
+|:-----------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------:|
+| ![Rentals List Screen](https://github.com/michael204060/bicycle-dealer-center/tree/master/docs/mockups/RentalsList.png) | ![Rent Bicycle Modal](https://github.com/michael204060/bicycle-dealer-center/tree/master/docs/mockups/RentingBicycle.png) | ![Return Bicycle Modal](https://github.com/michael204060/bicycle_dealer_center/tree/master/docs/mockups/ReturningBicycle.png) |
 
 <a name="user_specifications"/>
 
