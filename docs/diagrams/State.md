@@ -4,7 +4,7 @@
 
 Эта диаграмма показывает жизненный цикл велосипеда в системе.
 
-![Состояние велосипеда]https://github.com/michael204060/bicycle_dialer_center_ui/tree/master/docs/diagrams/images/BicycleState.png)
+![Состояние велосипеда](https://github.com/michael204060/bicycle_dialer_center_ui/tree/master/docs/diagrams/images/BicycleState.png)
 
 ### 2. Состояние интерфейса на странице "Список велосипедов"
 

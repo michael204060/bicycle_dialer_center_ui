@@ -26,7 +26,17 @@ Bicycle Dealer Center — это веб-приложение для управл
 *   **Отчетность:**
     *   Просмотр активных и завершенных аренд в отдельном разделе.
 
+## Навигация по репозиторию:
 [SRS файл программы](https://github.com/michael204060/bicycle_dialer_center_ui/blob/master/docs/SRS.md)
+
+[Diagrams](https://github.com/michael204060/bicycle_dialer_center_ui/tree/master/docs/diagrams)
+
+[Interface images](https://github.com/michael204060/bicycle_dialer_center_ui/tree/master/docs/mockups)
+
+[Test plan](https://github.com/michael204060/bicycle_dialer_center_ui/blob/master/Test%20plan.md)
+
+[Test results](https://github.com/michael204060/bicycle_dialer_center_ui/blob/master/Test%20results.md)
+
 ## 🛠️ Технологический стек
 
 *   **Frontend:** React, TypeScript
